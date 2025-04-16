@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+## NAME: LOSHINI.G
+## REGISTER NUMBER: 212223220051
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -37,11 +37,53 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+### IMPORT LIBRARIES:
+```
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+```
+### LOAD DATASET:
+```
+df=pd.read_csv('Churn_Modelling.csv',index_col="RowNumber")
+df.head()
+```
+### DATA PREPROCESSING:
+```
+df.isnull().sum()
+df.duplicated().sum()
+df = df.drop(['Surname', 'Geography', 'Gender'], axis=1)
+df.head()  
+scaler=StandardScaler()
+df=pd.DataFrame(scaler.fit_transform(df))
+df.head()
+```
+### ASSINGNING X AND Y VALUES:
+```
+x=df.iloc[:,:-1]
+y=df.iloc[:,-1]
+```
+### SPLITTING DATA FOR TRAINING AND TESTING:
+```
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+x.shape
+y.shape
+print("X training data shape=",x_train.shape)
+print("X testing data shape=",x_test.shape)
+print("Y training data shape=",y_train.shape)
+print("Y testing data shape=",y_test.shape)
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+## DATASET:
+![image](https://github.com/user-attachments/assets/58a79152-6e11-4de0-a8f1-b4bfa64b4dbe)
+## SUMMATION OF NULL VALUES:
+![image](https://github.com/user-attachments/assets/b3d71b71-b2d3-42c1-a6a8-435bea798d0a)
+## DATASET AFTER SCALING:
+![image](https://github.com/user-attachments/assets/772e0070-6c5a-412c-b2b1-c2c4dbdde1b4)
+## SPLITTING TRAINING AND TESTING DATA:
+![image](https://github.com/user-attachments/assets/79a3b601-6914-4e0c-9b4a-6fdd36635586)
 
 
 ## RESULT:
